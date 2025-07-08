@@ -20,8 +20,11 @@ public class UIRandomizeToolManager : MonoBehaviour
         for(int i = 0; i < toolScriptableObjects.Count; i++)
         {
             toolIDS.Add(i);
-        }
+        }      
+    }
 
+    private void OnEnable()
+    {
         RandomizeTool(0);
     }
 

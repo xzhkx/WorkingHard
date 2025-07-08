@@ -10,16 +10,18 @@ public class UIStartGame : MonoBehaviour
     private Button startButton;
 
     [SerializeField]
-    private Canvas menuCanvas;
+    private Canvas menuCanvas, gameplayCanvas;
 
     private void Awake()
     {
         startButton.onClick.AddListener(StartGame);
+        gameplayCanvas.enabled = false;
     }
 
     private void StartGame()
     {
         menuCanvas.enabled = false;
+        gameplayCanvas.enabled = true;
         StartGameAction?.Invoke();
     }
 }
