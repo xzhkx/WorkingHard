@@ -10,7 +10,7 @@ public class UIStartGame : MonoBehaviour
     private Button startButton;
 
     [SerializeField]
-    private Image nameImage;
+    private Canvas menuCanvas;
 
     private void Awake()
     {
@@ -19,9 +19,7 @@ public class UIStartGame : MonoBehaviour
 
     private void StartGame()
     {
-        startButton.gameObject.SetActive(false);
-        nameImage.enabled = false;
-
+        menuCanvas.enabled = false;
         StartGameAction?.Invoke();
     }
 }
