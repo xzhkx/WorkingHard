@@ -5,27 +5,53 @@ using UnityEngine;
 public class InstantiateLevel : MonoBehaviour
 {
     [SerializeField]
-    private GameObject levelPrefab;
+    private Transform levelParent;
 
     [SerializeField]
-    private Transform levelParent;
+    private List<GameObject> levelPrefabs = new List<GameObject>();
+
+    private Queue<GameObject> levelQueue = new Queue<GameObject>();
+    private GameObject levelPrefab;
+
+
+    private void Awake()
+    {
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            InstantiateObject(4);
+            InstantiateObject(3);
         }
     }
-
     private void InstantiateObject(int amount)
     {
+        int random = Random.Range(0, levelPrefabs.Count);
+        levelPrefab = levelPrefabs[random];
+        //levelPrefabs.Remove(levelPrefabs[random]);
+
         for (int i = 0; i < amount; i++)
         {
-            Vector3 instantiatePosition = new Vector3(levelPrefab.transform.position.x, levelPrefab.transform.position.y, levelPrefab.transform.position.z + levelPrefab.transform.localScale.z);
-            GameObject obj = Instantiate(levelPrefab, instantiatePosition, Quaternion.identity);
+            Vector3 instantiatePosition = new Vector3(levelPrefab.transform.position.x, 
+                levelPrefab.transform.position.y, levelPrefab.transform.position.z 
+                + levelPrefab.transform.localScale.z);
+
+            int rand = Random.Range(0, levelPrefabs.Count);
+
+            GameObject obj = Instantiate(levelPrefabs[rand], 
+                instantiatePosition, Quaternion.identity, levelParent);
             levelPrefab = obj;
 
+            levelQueue.Enqueue(levelPrefabs[rand]);
+            levelPrefabs.Remove(levelPrefabs[rand]);
+        }
+
+        int count = levelQueue.Count;
+
+        for (int i = 0; i < count; i++) 
+        { 
+            levelPrefabs.Add(levelQueue.Dequeue());
         }
     }
 }

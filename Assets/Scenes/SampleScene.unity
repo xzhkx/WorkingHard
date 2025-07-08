@@ -957,7 +957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &327634568
 Transform:
   m_ObjectHideFlags: 0
@@ -4447,8 +4447,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eded5d607b7b924bb1baf0d185ea9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPrefab: {fileID: 945362205674770166, guid: c8944111df716e745aeff113b759d75e, type: 3}
   levelParent: {fileID: 1838154060}
+  levelPrefabs:
+  - {fileID: 8148899647484694692, guid: 675ed713ec5105c4db60176ba376e94f, type: 3}
+  - {fileID: 8565678655074251471, guid: ea0f098fb17df8347b5d96d3bbe9da19, type: 3}
+  - {fileID: 945362205674770166, guid: c8944111df716e745aeff113b759d75e, type: 3}
+  - {fileID: 8565678655074251471, guid: ea0f098fb17df8347b5d96d3bbe9da19, type: 3}
+  - {fileID: 945362205674770166, guid: c8944111df716e745aeff113b759d75e, type: 3}
 --- !u!1 &1438124484
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,6 +4824,10 @@ PrefabInstance:
     - target: {fileID: 8565678655074251471, guid: ea0f098fb17df8347b5d96d3bbe9da19, type: 3}
       propertyPath: m_Name
       value: SnowRoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565678655074251471, guid: ea0f098fb17df8347b5d96d3bbe9da19, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5571,7 +5580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1789980859
 Transform:
   m_ObjectHideFlags: 0
@@ -5782,10 +5791,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1431987901737007279}
   - {fileID: 1527673137}
   - {fileID: 327634568}
   - {fileID: 1789980859}
+  - {fileID: 1431987901737007279}
   - {fileID: 1653462055}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7403,7 +7412,7 @@ Transform:
   m_GameObject: {fileID: 2483248487022406191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.619248, y: -4.8697796, z: 45}
+  m_LocalPosition: {x: 2.6192474, y: -4.8697796, z: 45}
   m_LocalScale: {x: 10, y: 10, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8178,7 +8187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2509485435024011792
 GameObject:
   m_ObjectHideFlags: 0
@@ -8406,6 +8415,10 @@ PrefabInstance:
     - target: {fileID: 8148899647484694692, guid: 675ed713ec5105c4db60176ba376e94f, type: 3}
       propertyPath: m_Name
       value: DirtGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148899647484694692, guid: 675ed713ec5105c4db60176ba376e94f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
