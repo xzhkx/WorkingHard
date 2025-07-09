@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class UIRandomizeToolManager : MonoBehaviour
 {
+    public static UIRandomizeToolManager Instance;
+
     [SerializeField]
     private List<ToolScriptableObject> toolScriptableObjects = new List<ToolScriptableObject>(6);
 
@@ -14,21 +16,16 @@ public class UIRandomizeToolManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         toolIDS = new List<int>(toolScriptableObjects.Count);
+
         for(int i = 0; i < toolScriptableObjects.Count; i++)
         {
             toolIDS.Add(i);
         }      
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            RandomizeTool(1);
-        }
-    }
-
-    private void RandomizeTool(int matchToolID)
+    public void RandomizeTool(int matchToolID)
     {
         toolIDS.Remove(matchToolID);
         selectedToolIDS.Add(matchToolID);

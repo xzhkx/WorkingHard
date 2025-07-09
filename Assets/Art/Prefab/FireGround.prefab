@@ -2432,9 +2432,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4390467544519352504}
   - component: {fileID: 1606015945152765301}
+  - component: {fileID: -5066048427897331150}
   m_Layer: 0
   m_Name: FireGround
-  m_TagString: Untagged
+  m_TagString: GroundArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2489,6 +2490,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5066048427897331150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215975509365486303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c91b216ef970404b931ec8d1411246f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaID: 0
 --- !u!1 &7217732383726354960
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class UIToolSelection : MonoBehaviour
     public void SetNewTool(ToolScriptableObject tool)
     {
         toolID = tool.toolID;
-
         toolImage.sprite = tool.toolSprite;
     }
 

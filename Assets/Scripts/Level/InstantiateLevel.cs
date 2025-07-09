@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,12 +32,14 @@ public class InstantiateLevel : MonoBehaviour
             Vector3 instantiatePosition = new Vector3(levelPrefab.transform.position.x, 
                 levelPrefab.transform.position.y, levelPrefab.transform.position.z 
                 + levelPrefab.transform.localScale.z);
+            Vector3 enemyPosition = new Vector3(-16f, instantiatePosition.y, instantiatePosition.z);
 
             int rand = Random.Range(0, levelPrefabs.Count);
 
             GameObject obj = Instantiate(levelPrefabs[rand], 
                 instantiatePosition, Quaternion.identity, levelParent);
             levelPrefab = obj;
+            Instantiate(obj, enemyPosition, Quaternion.identity, levelParent);
 
             levelQueue.Enqueue(levelPrefabs[rand]);
             levelPrefabs.Remove(levelPrefabs[rand]);
