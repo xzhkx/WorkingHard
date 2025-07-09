@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float fastSpeed, slowSpeed;
+
+    [SerializeField]
+    private Animator gardenerBroomAnimator;
 
     private float currentSpeed;
     private Rigidbody playerRigidbody;
@@ -34,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
     public void SpeedUpPlayer()
     {
         currentSpeed = fastSpeed;
+    }
+
+    public void StopPlayer()
+    {
+        currentSpeed = 0;
+        gardenerBroomAnimator.Play("Idle");
     }
 
     private void OnStartGame()

@@ -26,6 +26,11 @@ public class PlayerToolInformation : MonoBehaviour
         playerMovement.SpeedUpPlayer();
     }
 
+    public void StopPlayer()
+    {
+        playerMovement.StopPlayer();
+    }
+
     private void ChangeToolID(int toolID)
     {
         currentToolID = toolID;
