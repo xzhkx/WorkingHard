@@ -35,9 +35,16 @@ public class AreaInformation : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (!collision.gameObject.CompareTag("Player")) return;
-        playerInRange = true;
-        UIRandomizeToolManager.Instance.RandomizeTool(areaID);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+            UIRandomizeToolManager.Instance.RandomizeTool(areaID);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyToolManager.EnemyChangeTool?.Invoke(areaID);
+        }
     }
 
     private void OnTriggerExit(Collider collision)

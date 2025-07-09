@@ -7,7 +7,7 @@ public class InteractFlowerTypeRoad : MonoBehaviour
 
     private int areaID = 4;
 
-    private bool playerInRange;
+    private bool playerInRange, enemyInRange;
     private bool isWatering;
 
     private float growTime = 0.75f;
@@ -16,8 +16,9 @@ public class InteractFlowerTypeRoad : MonoBehaviour
     private void Awake()
     {
         playerInRange = false;
-        isWatering = false;
+        enemyInRange = false;
 
+        isWatering = false;
         transform.localScale = originalScale;
     }
 
@@ -28,13 +29,13 @@ public class InteractFlowerTypeRoad : MonoBehaviour
             WateringFlower();
             return;
         }
-        if (!playerInRange) return;
         WateringFlower();
     }
 
     private void WateringFlower()
     {
-        if (PlayerToolInformation.Instance.currentToolID == areaID)
+        if ((playerInRange && PlayerToolInformation.Instance.currentToolID == areaID) || 
+            enemyInRange)
         {
             isWatering = true;
 
@@ -46,13 +47,24 @@ public class InteractFlowerTypeRoad : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        if (!collider.gameObject.CompareTag("Player")) return;
-        playerInRange = true;
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            enemyInRange = true;
+        }
     }
-
     private void OnTriggerExit(Collider collider)
     {
-        if (!collider.gameObject.CompareTag("Player")) return;
-        playerInRange = false;
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            enemyInRange = false;
+        }
     }
 }

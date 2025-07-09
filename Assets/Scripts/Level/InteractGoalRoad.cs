@@ -7,7 +7,12 @@ public class InteractGoalRoad : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerToolManager.ChangeToolAction?.Invoke(1);
-            PlayerToolInformation.Instance.StopPlayer();
+            other.gameObject.GetComponent<PlayerMovement>().StopPlayer();
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            EnemyToolManager.EnemyChangeTool?.Invoke(1);
+            other.gameObject.GetComponent<EnemyMovement>().StopEnemy();
         }
     }
 }
