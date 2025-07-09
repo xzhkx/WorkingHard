@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 public class InstantiateLevel : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject goalRoad;
+
     [SerializeField]
     private Transform levelParent;
 
@@ -43,6 +45,18 @@ public class InstantiateLevel : MonoBehaviour
 
             levelQueue.Enqueue(levelPrefabs[rand]);
             levelPrefabs.Remove(levelPrefabs[rand]);
+
+            if(i == amount - 1)
+            {
+                instantiatePosition = new Vector3(levelPrefab.transform.position.x,
+                levelPrefab.transform.position.y, levelPrefab.transform.position.z
+                + levelPrefab.transform.localScale.z);
+                enemyPosition = new Vector3(-16f, instantiatePosition.y, instantiatePosition.z);
+
+                Instantiate(goalRoad,
+                instantiatePosition, Quaternion.identity, levelParent);
+                Instantiate(goalRoad, enemyPosition, Quaternion.identity, levelParent);
+            }
         }
 
         int count = levelQueue.Count;

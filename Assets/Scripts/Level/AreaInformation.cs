@@ -33,14 +33,14 @@ public class AreaInformation : MonoBehaviour
         return areaID;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
         playerInRange = true;
         UIRandomizeToolManager.Instance.RandomizeTool(areaID);
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
         playerInRange = false;
