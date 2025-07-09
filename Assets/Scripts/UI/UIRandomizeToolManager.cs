@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIRandomizeToolManager : MonoBehaviour
 {
@@ -23,9 +21,11 @@ public class UIRandomizeToolManager : MonoBehaviour
         }      
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        RandomizeTool(0);
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            RandomizeTool(1);
+        }
     }
 
     private void RandomizeTool(int matchToolID)
@@ -43,6 +43,13 @@ public class UIRandomizeToolManager : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             toolUI[i].GetComponent<UIToolSelection>().SetNewTool(toolScriptableObjects[selectedToolIDS[i]]);
+        }
+
+        toolIDS.Clear();
+        selectedToolIDS.Clear();
+        for (int i = 0; i < toolScriptableObjects.Count; i++)
+        {
+            toolIDS.Add(i);
         }
     }
 }

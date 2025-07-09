@@ -6,7 +6,7 @@ public class UIToolSelection : MonoBehaviour
     private int toolID;
     private Image toolImage;
 
-    private void Awake()
+    private void Start()
     {
         Button toolButton = GetComponent<Button>();
         toolButton.onClick.AddListener(ChangeTool);
@@ -17,7 +17,8 @@ public class UIToolSelection : MonoBehaviour
     public void SetNewTool(ToolScriptableObject tool)
     {
         toolID = tool.toolID;
-        this.toolImage.sprite = tool.toolSprite;
+
+        toolImage.sprite = tool.toolSprite;
     }
 
     private void ChangeTool()

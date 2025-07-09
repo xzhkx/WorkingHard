@@ -13,23 +13,20 @@ public class InstantiateLevel : MonoBehaviour
     private Queue<GameObject> levelQueue = new Queue<GameObject>();
     private GameObject levelPrefab;
 
-
     private void Awake()
     {
+        UIStartGame.StartGameAction += OnInstantiateLevel;
     }
 
-    private void Update()
+    private void OnInstantiateLevel()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            InstantiateObject(3);
-        }
+        InstantiateObject(4);
     }
+
     private void InstantiateObject(int amount)
     {
         int random = Random.Range(0, levelPrefabs.Count);
         levelPrefab = levelPrefabs[random];
-        //levelPrefabs.Remove(levelPrefabs[random]);
 
         for (int i = 0; i < amount; i++)
         {
