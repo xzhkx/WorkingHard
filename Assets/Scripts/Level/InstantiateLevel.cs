@@ -21,7 +21,7 @@ public class InstantiateLevel : MonoBehaviour
 
     private void OnInstantiateLevel()
     {
-        InstantiateObject(5);
+        InstantiateObject(4);
     }
 
     private void InstantiateObject(int amount)
