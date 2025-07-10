@@ -8,21 +8,33 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Animator gardenerBroomAnimator;
 
+    [SerializeField]
+    private GameObject dirtVFX;
+
+    private Vector3 originalPosition;
+    private bool finishGame;
+
     private float currentSpeed;
     private Rigidbody playerRigidbody;
 
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        originalPosition = transform.position;
 
         SpeedUpPlayer();
         gameObject.SetActive(false);
 
+        FinishGameManager.LoseGame += StopPlayer;
         UIStartGame.StartGameAction += OnStartGame;
+
+        UIHomeButton.ResetGameAction += ResetGame;
+        finishGame = false;
     }
 
     private void FixedUpdate()
     {
+        if (finishGame) return;
         playerRigidbody.velocity = Vector3.forward * currentSpeed;
     }
 
@@ -38,10 +50,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopPlayer()
     {
-        currentSpeed = 0;
+        finishGame = true;
+        playerRigidbody.velocity = Vector3.zero;
+        if (!gardenerBroomAnimator.gameObject.activeInHierarchy) return;
         gardenerBroomAnimator.Play("Idle");
+        dirtVFX.SetActive(false);
     }
 
+    private void ResetGame()
+    {
+        finishGame = false;
+        SpeedUpPlayer();
+        dirtVFX.SetActive(true);
+
+        PlayerToolManager.ChangeToolAction?.Invoke(1);
+        transform.position = originalPosition;
+        gameObject.SetActive(false);
+    }
     private void OnStartGame()
     {
         gameObject.SetActive(true);

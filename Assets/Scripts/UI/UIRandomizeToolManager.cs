@@ -11,6 +11,9 @@ public class UIRandomizeToolManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> toolUI = new List<GameObject>(3);
 
+    [SerializeField]
+    private GameObject gameplayCanvas;
+
     private List<int> toolIDS;
     private List<int> selectedToolIDS = new List<int>(3);
 
@@ -27,6 +30,8 @@ public class UIRandomizeToolManager : MonoBehaviour
 
     public void RandomizeTool(int matchToolID)
     {
+        gameplayCanvas.SetActive(true);
+
         toolIDS.Remove(matchToolID);
         selectedToolIDS.Add(matchToolID);
         

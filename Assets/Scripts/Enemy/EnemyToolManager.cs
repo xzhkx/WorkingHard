@@ -22,6 +22,7 @@ public class EnemyToolManager : MonoBehaviour
     private void Awake()
     {
         EnemyChangeTool += OnChangeTool;
+
         currentTool = toolTypes[1];
         waitForTool = new WaitForSeconds(timeToChangeTool);
     }

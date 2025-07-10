@@ -22,6 +22,7 @@ public class UIStartGame : MonoBehaviour
     {
         menuCanvas.enabled = false;
         gameplayCanvas.enabled = true;
+        gameplayCanvas.gameObject.SetActive(false);
         StartGameAction?.Invoke();
     }
 }

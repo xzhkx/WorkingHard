@@ -8,20 +8,29 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private Animator gardenerBroomAnimator;
 
+    [SerializeField]
+    private GameObject dirtVFX;
+
     private Rigidbody enemyRigidbody;
     private float currentSpeed;
 
+    private Vector3 originalPosition;
     private bool finishRace;
 
     private void Awake()
     {
         finishRace = false;
+        originalPosition = transform.position;
 
         enemyRigidbody = GetComponent<Rigidbody>();
         gameObject.SetActive(false);
 
         SpeedUpEnemy();
+
+        FinishGameManager.WinGame += StopEnemy;
         UIStartGame.StartGameAction += OnStartGame;
+
+        UIHomeButton.ResetGameAction += ResetGame;
     }
 
     private void FixedUpdate()
@@ -43,11 +52,23 @@ public class EnemyMovement : MonoBehaviour
     public void StopEnemy()
     {
         enemyRigidbody.velocity = Vector3.zero;
-        gardenerBroomAnimator.Play("Idle");
         finishRace = true;
-
+        if (!gardenerBroomAnimator.gameObject.activeInHierarchy) return;
+        dirtVFX.SetActive(false);
+        gardenerBroomAnimator.Play("Idle");
     }
 
+    private void ResetGame()
+    {
+        finishRace = false;
+        dirtVFX.SetActive(true);
+
+        EnemyToolManager.EnemyChangeTool?.Invoke(1);
+        SpeedUpEnemy();
+
+        transform.position = originalPosition;
+        gameObject.SetActive(false);
+    }
     private void OnStartGame()
     {
         gameObject.SetActive(true);

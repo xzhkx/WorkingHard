@@ -14,6 +14,7 @@ public class PlayerToolManager : MonoBehaviour
     private void Awake()
     {
         ChangeToolAction += OnChangeTool;
+
         currentTool = toolTypes[1];
         currentTool.SetActive(true);
     }
