@@ -23,5 +23,6 @@ public class UIToolSelection : MonoBehaviour
     private void ChangeTool()
     {
         PlayerToolManager.ChangeToolAction(toolID);
+        SoundManager.PlaySound(toolID + 1, 1);
     }
 }

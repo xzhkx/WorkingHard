@@ -23,8 +23,11 @@ public class UIStartGame : MonoBehaviour
 
     private void StartGame()
     {
+        SoundManager.PlaySound(0);
+
         menuCanvas.enabled = false;
         gameplayCanvas.enabled = true;
+
         toolButtons.SetActive(false);
         StartGameAction?.Invoke();
     }

@@ -24,7 +24,7 @@ public class FinishGameManager : MonoBehaviour
 
     private void OnWinGame()
     {
-        mainCamera.transform.parent = null;
+        SoundManager.PlaySound(6);
 
         gameStateCanvas.enabled = true;
         gameplayCanvas.enabled = false;
@@ -35,8 +35,7 @@ public class FinishGameManager : MonoBehaviour
 
     private void OnLoseGame()
     {
-        mainCamera.transform.parent = null;
-
+        SoundManager.PlaySound(7);
         gameStateCanvas.enabled = true;
         gameplayCanvas.enabled = false;
 

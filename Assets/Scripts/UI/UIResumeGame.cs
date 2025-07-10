@@ -16,6 +16,8 @@ public class UIResumeGame : MonoBehaviour
 
     private void ResumeGame()
     {
+        SoundManager.PlaySound(0);
+
         Time.timeScale = 1;
         pausePanel.SetActive(false);
     }

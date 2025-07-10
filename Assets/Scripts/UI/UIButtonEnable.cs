@@ -19,6 +19,8 @@ public class UIButtonEnable : MonoBehaviour
 
     private void EnableObject()
     {
+        SoundManager.PlaySound(0);
+
         objectToEnable.SetActive(true);
         Time.timeScale = 0;
     }

@@ -14,6 +14,8 @@ public class UIHome : MonoBehaviour
 
     private void ReturnHome()
     {
+        SoundManager.PlaySound(0);
+
         Time.timeScale = 1;
         UIHomeButton.ResetGameAction?.Invoke();
     }
