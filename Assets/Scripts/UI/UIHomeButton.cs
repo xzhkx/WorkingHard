@@ -1,30 +1,26 @@
 using System;
-
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIHomeButton : MonoBehaviour
 {
     public static Action ResetGameAction;
 
     [SerializeField]
-    private Canvas menuCanvas, gameStateCanvas;
+    private Canvas menuCanvas, gameStateCanvas, gameplayCanvas;
 
-    private Button homeButton;
+    [SerializeField]
+    private GameObject pausePanel;
 
     private void Awake()
     {
-
-
-        homeButton = GetComponent<Button>();
-        homeButton.onClick.AddListener(ReturnHome);
+        ResetGameAction += ResetGame;
     }
 
-    private void ReturnHome()
+    private void ResetGame()
     {
         menuCanvas.enabled = true;
         gameStateCanvas.enabled = false;
-
-        ResetGameAction?.Invoke();
+        pausePanel.SetActive(false);
+        gameplayCanvas.enabled = false; 
     }
 }

@@ -12,6 +12,9 @@ public class UIStartGame : MonoBehaviour
     [SerializeField]
     private Canvas menuCanvas, gameplayCanvas;
 
+    [SerializeField]
+    private GameObject toolButtons;
+
     private void Awake()
     {
         startButton.onClick.AddListener(StartGame);
@@ -22,7 +25,7 @@ public class UIStartGame : MonoBehaviour
     {
         menuCanvas.enabled = false;
         gameplayCanvas.enabled = true;
-        gameplayCanvas.gameObject.SetActive(false);
+        toolButtons.SetActive(false);
         StartGameAction?.Invoke();
     }
 }

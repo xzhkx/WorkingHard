@@ -30,6 +30,8 @@ public class CameraMovement : MonoBehaviour
 
     private void ResetGame()
     {
+        gameObject.transform.parent = null;
+
         gameObject.transform.position = originalPosition;
         gameObject.transform.eulerAngles = originalRotation;
     }
